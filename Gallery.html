@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Gallery</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+		<style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        select {
+            font-size: 1.5rem;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            transition: box-shadow 0.3s ease;
+        }
+        select:focus {
+            box-shadow: 0 0 20px rgba(0, 0, 255, 0.5);
+            outline: none;
+        }
+        .gallery {
+            display: none;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .gallery-item {
+            border: 2px solid #ccc;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            text-align: center;
+        }
+        img, video {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .caption {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #333;
+        }
+    </style>
+    <script>
+        function showGallery(province) {
+            const galleries = document.querySelectorAll('.gallery');
+            galleries.forEach(gallery => gallery.style.display = 'none');
+            document.getElementById(province).style.display = 'flex';
+        }
+    </script>  
+
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" role="status"></div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Topbar start -->
+        <div class="container-fluid fixed-top">
+            <div class="container topbar d-none d-lg-block">
+                <div class="topbar-inner">
+                    <div class="row gx-0">
+                        <div class="col-lg-7 text-start">
+                            <div class="h-100 d-inline-flex align-items-center me-4">
+                                <span class="fa fa-phone-alt me-2 text-dark"></span>
+                                <a href="#" class="text-secondary"><span>+675  788 03035</span></a>
+                            </div>
+                            <div class="h-100 d-inline-flex align-items-center">
+                                <span class="far fa-envelope me-2 text-dark"></span>
+                                <a href="#" class="text-secondary"><span>pnglocalculture.com</span></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 text-end">
+                            <div class="h-100 d-inline-flex align-items-center">
+                                <span class="text-body">Follow Us:</span>
+                                <a class="text-dark px-2" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="text-dark px-2" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="text-dark px-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                                <a class="text-dark px-2" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="text-body ps-4" href=""><i class="fa fa-lock text-dark me-1"></i> Signup/login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <nav class="navbar navbar-light navbar-expand-lg py-3">
+                    <a href="index.html" class="navbar-brand">
+                        <h1 class="mb-0">PNG 50th<span class="text-primary">  Independance</span> </h1>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars text-primary"></span>
+                    </button>
+                    <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+                        <div class="navbar-nav ms-lg-auto mx-xl-auto">
+                            <a href="index.html" class="nav-item nav-link">Home</a>
+                            <a href="about.html" class="nav-item nav-link">About</a>
+                            <a href="history.html" class="nav-item nav-link">History</a>
+                            <a href="event.html" class="nav-item nav-link">Events</a>
+                            <a href="culture.html" class="nav-item nav-link">Culture</a>
+							<a href="Gallery.html" class="nav-item nav-link">Gallery</a>
+                            <div class="nav-item dropdown">
+                             <!--  <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
+                                <div class="dropdown-menu m-0 rounded-0">
+                                    <a href="blog.html" class="dropdown-item">Latest Blog</a>
+                                    <a href="team.html" class="dropdown-item active">Our Team</a>
+                                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                    <a href="404.html" class="dropdown-item">404 Page</a>
+                                </div> -->
+                            </div>
+                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        </div>
+                        <a href="" class="btn btn-primary py-2 px-4 d-none d-xl-inline-block">Donate</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Topbar End -->
+
+
+        <!-- Hero Start -->
+        <div class="container-fluid hero-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="hero-header-inner animated zoomIn">
+                            <h1 class="display-1 text-dark">Gallery</h1>
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                                <li class="breadcrumb-item text-dark" aria-current="page">Our Team</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero End -->
+			
+			    <div class="dropdown">
+        <select onchange="showGallery(this.value)">
+            <option value="">Select a Province</option>
+            <option value="central">Central</option>
+            <option value="east-sepik">East Sepik</option>
+            <option value="enga">Enga</option>
+            <option value="east-new-britain">East New Britain</option>
+            <option value="new-ireland">New Ireland</option>
+            <option value="gulf">Gulf</option>
+            <option value="madang">Madang</option>
+            <option value="manus">Manus</option>
+            <option value="milne-bay">Milne Bay</option>
+            <option value="morobe">Morobe</option>
+            <option value="northern">Northern</option>
+            <option value="west-sepik">West Sepik</option>
+            <option value="southern-highlands">Southern Highlands</option>
+            <option value="western">Western</option>
+            <option value="western-highlands">Western Highlands</option>
+            <option value="west-new-britain">West New Britain</option>
+            <option value="hela">Hela</option>
+            <option value="bougainville">Bougainville</option>
+            <option value="jiwaka">Jiwaka</option>
+            <option value="popondetta">Oro</option>
+            <option value="port-moresby">Port Moresby</option>
+            <option value="goroka">Eastern Highlands</option>
+        </select>
+    </div>
+
+     <div id="central" class="gallery">
+        <div class="gallery-item">
+            <img src="img/Gallery/C1.jpg" alt="Central Image 1">
+            <div class="caption">Central Image 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/C2.jpg" alt="Central Image 2">
+            <div class="caption">Central Image 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/C3.jpg" alt="Central Image 3">
+            <div class="caption">Central Image 3</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/C4.jpg" alt="Central Image 4">
+            <div class="caption">Central Image 4</div>
+        </div>
+    </div>
+
+    <div id="east-sepik" class="gallery">
+        <div class="gallery-item">
+            <img src="img/Gallery/SP1.jpg" alt="East Sepik Image 1">
+            <div class="caption">East Sepik Image 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/SP2.jpg" alt="East Sepik Image 2">
+            <div class="caption">East Sepik Image 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/SP3.jpg" alt="East Sepik Image 3">
+            <div class="caption">East Sepik Image 3</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/SP4.jpg" alt="East Sepik Image 4">
+            <div class="caption">East Sepik Image 4</div>
+        </div>
+        <div class="gallery-item">
+            <video controls>
+                <source src="east-sepik_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="caption">East Sepik Video</div>
+        </div>
+    </div>
+
+	<div id="enga" class="gallery">
+        <div class="gallery-item">
+            <img src="img/Gallery/E1.jpg" alt="Enga Image 1">
+            <div class="caption">Enga Image 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/E2.jpg" alt="Enga Image 2">
+            <div class="caption">Enga Image 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/E3.jpg" alt="Enga Image 3">
+            <div class="caption">Enga Image 3</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/E4.jpg" alt="Enga Image 4">
+            <div class="caption">Enga Image 4</div>
+        </div>
+        <div class="gallery-item">
+            <video controls>
+                <source src="east-sepik_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="caption">Enga Video</div>
+        </div>
+    </div>
+	
+	<div id="east-new-britain" class="gallery">
+        <div class="gallery-item">
+            <img src="img/Gallery/ENB1.jpg" alt="East New Britain Image 1">
+            <div class="caption">East New Britain Image 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/ENB2.jpg" alt="East New Britain Image 2">
+            <div class="caption">East New Britain Image 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/ENB3.jpg" alt="East New Britain Image Image 3">
+            <div class="caption">East New Britain Image 3</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/ENB4.jpg" alt="East New Britain Image 4">
+            <div class="caption">East New Britain Image 4</div>
+        </div>
+        <div class="gallery-item">
+            <video controls>
+                <source src="east-sepik_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="caption">East New Britain Video</div>
+        </div>
+    </div>
+	
+	<div id="new-ireland" class="gallery">
+        <div class="gallery-item">
+            <img src="img/Gallery/NIP1.jpg" alt="New Ireland Image 1">
+            <div class="caption">New Ireland Image 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/NIP2.jpg" alt="New Ireland Image 2">
+            <div class="caption">New Ireland Image 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/NIP3.jpg" alt="New Ireland Image 3">
+            <div class="caption">New Ireland Image 3</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/NIP4.jpg" alt="New Ireland Image 4">
+            <div class="caption">New Ireland Image 4</div>
+        </div>
+        <div class="gallery-item">
+            <video controls>
+                <source src="east-sepik_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="caption">New Ireland Video</div>
+        </div>
+    </div>
+	
+	<div id="gulf" class="gallery">
+        <div class="gallery-item">
+            <img src="img/Gallery/G1.jpg" alt="Gulf Image 1">
+            <div class="caption">Gulf Image 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/G2.jpg" alt="Gulf Image 2">
+            <div class="caption">Gulf Image 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/G3.jpg" alt="Gulf Image 3">
+            <div class="caption">Gulf Image 3</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/G4.jpg" alt="Gulf Image 4">
+            <div class="caption">Gulf Image 4</div>
+        </div>
+        <div class="gallery-item">
+            <video controls>
+                <source src="east-sepik_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="caption">Gulf Video</div>
+        </div>
+    </div>
+	
+	<div id="madang" class="gallery">
+        <div class="gallery-item">
+            <img src="img/Gallery/M3.jpg" alt="Madang Image 1">
+            <div class="caption">Madang Image 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/M4.jpg" alt="Madang Image 2">
+            <div class="caption">Madang Image 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/M1.jpg" alt="Madang Image 3">
+            <div class="caption">Madang Image 3</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/M2.jpg" alt="Madang Image 4">
+            <div class="caption">Madang Image 4</div>
+        </div>
+        <!--<div class="gallery-item">
+            <video controls>
+                <source src="east-sepik_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="caption">Madang Video</div>
+        --></div>
+    </div>
+	
+		<div id="manus" class="gallery">
+        <div class="gallery-item">
+            <img src="img/Gallery/MP3.jpg" alt="Manus Image 1">
+            <div class="caption">Manus Image 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/MP4.jpg" alt="Manus Image 2">
+            <div class="caption">Manus Image 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/MP1.jpg" alt="Manus Image 3">
+            <div class="caption">Manus Image 3</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/MP2.jpg" alt="Manus Image 4">
+            <div class="caption">Manus Image 4</div>
+        </div>
+        <!--<div class="gallery-item">
+            <video controls>
+                <source src="east-sepik_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="caption">Madang Video</div>
+        --></div>
+    </div>
+	
+	<div id="milne-bay" class="gallery">
+        <div class="gallery-item">
+            <img src="img/Gallery/MB3.jpg" alt="Milne-bay Image 1">
+            <div class="caption">Milne-bay Image 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/MB4.jpg" alt="Milne-bay Image 2">
+            <div class="caption">Milne-bay Image 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/MB1.jpg" alt="Milne-bay Image 3">
+            <div class="caption">Milne-bay Image 3</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/MB2.jpg" alt="Milne-bay Image 4">
+            <div class="caption">Milne-bay Image 4</div>
+        </div>
+        <!--<div class="gallery-item">
+            <video controls>
+                <source src="east-sepik_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="caption">Madang Video</div>
+        --></div>
+    </div>
+	
+	<div id="morobe" class="gallery">
+        <div class="gallery-item">
+            <img src="img/Gallery/MO3.jpg" alt="Morobe Image 1">
+            <div class="caption">Morobe Image 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/MO4.jpg" alt="Morobe Image 2">
+            <div class="caption">Morobe Image 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/MO1.jpg" alt="Morobe Image 3">
+            <div class="caption">Morobe Image 3</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/MO2.jpg" alt="Morobe Image 4">
+            <div class="caption">Morobe Image 4</div>
+        </div>
+        <!--<div class="gallery-item">
+            <video controls>
+                <source src="east-sepik_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="caption">Madang Video</div>
+        --></div>
+    </div>
+	
+	<div id="northern" class="gallery">
+        <div class="gallery-item">
+            <img src="img/Gallery/O2.jpg" alt="Oro Image 1">
+            <div class="caption">Oro Image 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/O4.jpg" alt="Oro Image 2">
+            <div class="caption">Oro Image 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/O1.jpg" alt="Oro Image 3">
+            <div class="caption">Oro Image 3</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/O3.jpg" alt="Oro Image 4">
+            <div class="caption">Oro Image 4</div>
+        </div>
+        <!--<div class="gallery-item">
+            <video controls>
+                <source src="east-sepik_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="caption">Madang Video</div>
+        --></div>
+    </div>
+	
+	<div id="west-sepik" class="gallery">
+        <div class="gallery-item">
+            <img src="img/Gallery/WSP2.jpg" alt="West Sepik Image 1">
+            <div class="caption">West Sepik Image 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/WSP.jpg" alt="West Sepik Image 2">
+            <div class="caption">West SepikImage 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/WSP3.jpg" alt="West Sepik Image 3">
+            <div class="caption">West Sepik Image 3</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/WSP4.jpg" alt="West Sepik Image 4">
+            <div class="caption">West Sepik Image 4</div>
+        </div>
+        <!--<div class="gallery-item">
+            <video controls>
+                <source src="east-sepik_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="caption">Madang Video</div>
+        --></div>
+    </div>
+	
+	<div id="southern-highlands" class="gallery">
+        <div class="gallery-item">
+            <img src="img/Gallery/SHP1.jpg" alt="Southern Highlands Image 1">
+            <div class="caption">Southern Highlands Image 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/SHP2.jpg" alt="Southern Highlands Image 2">
+            <div class="caption">Southern Highlands Image 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/SHP3.jpg" alt="Southern Highlands Image 3">
+            <div class="caption">Southern Highlands Image 3</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/SHP4.jpg" alt="Southern Highlands Image 4">
+            <div class="caption">Southern Highlands Image 4</div>
+        </div>
+        <!--<div class="gallery-item">
+            <video controls>
+                <source src="east-sepik_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="caption">Madang Video</div>
+        --></div>
+    </div>
+	
+		<div id="western" class="gallery">
+        <div class="gallery-item">
+            <img src="img/Gallery/WST1.jpg" alt="Western Image 1">
+            <div class="caption">Western Image 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/WST2.jpg" alt="Western Image 2">
+            <div class="caption">Western Image 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/WST3.jpg" alt="Western Image 3">
+            <div class="caption">Western Image 3</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/WST4.jpg" alt="Western Image 4">
+            <div class="caption">Western Image 4</div>
+        </div>
+        <!--<div class="gallery-item">
+            <video controls>
+                <source src="east-sepik_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="caption">Madang Video</div>
+        --></div>
+    </div>
+	
+	<div id="western-highlands" class="gallery">
+        <div class="gallery-item">
+            <img src="img/Gallery/WHP1.jpg" alt="Western Highlands Image 1">
+            <div class="caption">Western Highlands Image 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/WHP2.jpg" alt="Western Highlands Image 2">
+            <div class="caption">Western Highlands 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/WHP3.jpg" alt="Western Highlands Image 3">
+            <div class="caption">Western Highlands Image 3</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/WHP4.jpg" alt="Western Highlands Image 4">
+            <div class="caption">Western Highlands Image 4</div>
+        </div>
+        <!--<div class="gallery-item">
+            <video controls>
+                <source src="east-sepik_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="caption">Madang Video</div>
+        --></div>
+    </div>
+	
+	<div id="western-highlands" class="gallery">
+        <div class="gallery-item">
+            <img src="img/Gallery/WHP1.jpg" alt="Western Highlands Image 1">
+            <div class="caption">Western Highlands Image 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/WHP2.jpg" alt="Western Highlands Image 2">
+            <div class="caption">Western Highlands 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/WHP3.jpg" alt="Western Highlands Image 3">
+            <div class="caption">Western Highlands Image 3</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/Gallery/WHP4.jpg" alt="Western Highlands Image 4">
+            <div class="caption">Western Highlands Image 4</div>
+        </div>
+        <!--<div class="gallery-item">
+            <video controls>
+                <source src="east-sepik_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="caption">Madang Video</div>
+        --></div>
+    </div>
+    <!-- Repeat for other provinces -->
+
+        <!-- Team Start -->
+       
+        <!-- Team End -->
+
+
+        <!-- Footer Start -->
+        <div class="container-fluid footer pt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row py-5">
+                    <div class="col-lg-7">
+                        <h1 class="text-light mb-0">Subscribe our newsletter</h1>
+                        <p class="text-secondary">Get the latest news and other tips</p>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="position-relative mx-auto">
+                            <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Subcribe</button>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="border-top border-secondary"></div>
+                    </div>
+                </div>
+                <div class="row g-4 footer-inner">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item mt-5">
+                            <h4 class="text-light mb-4">PNG's<span class="text-primary">Local History & Culture</span></h4>
+                            <p class="mb-4 text-secondary">Papua New Guinea’s history is shaped by ancient tribal societies and colonial influences, leading to independence in 1975. Its culture thrives through oral traditions, diverse languages, and strong community bonds.</p>
+                            <a href="" class="btn btn-primary py-2 px-4">Donate Now</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item mt-5">
+                            <h4 class="text-light mb-4">Our Address</h4>
+                            <div class="d-flex flex-column">
+                                <h6 class="text-secondary mb-0">Telikom PNG</h6>
+                                <div class="d-flex align-items-center border-bottom py-4">
+                                    <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i class="fa fa-map-marker-alt text-dark"></i></span>
+                                    <a href="" class="text-body">Kumul Avenue, Waigani, Port Moresby, Papua New Guinea</a>
+                                </div>
+                                <h6 class="text-secondary mt-4 mb-0">Our Mobile</h6>
+                                <div class="d-flex align-items-center py-4">
+                                    <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i class="fa fa-phone-alt text-dark"></i></span>
+                                    <a href="" class="text-body">+675 7575 8037</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item mt-5">
+                           <!-- <h4 class="text-light mb-4">Explore Link</h4>
+                            <div class="d-flex flex-column align-items-start">
+                                <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>Home</a>
+                                <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>About Us</a>
+                                <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>Our Features</a>
+                                <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>Contact us</a>
+                                <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>Our Blog</a>
+                                <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>Our Events</a>
+                                <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>Donations</a>
+                                <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>Sermons</a>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item mt-5">
+                            <h4 class="text-light mb-4">Latest Post</h4>
+                            <div class="d-flex border-bottom border-secondary py-4">
+                                <img src="img/skt.jpg" class="img-fluid flex-shrink-0" alt="">
+                                <div class="ps-3">
+                                    <p class="mb-0 text-muted"></p>
+                                    <a href="" class="text-body"></a>
+                                </div>
+                            </div>
+                            <div class="d-flex py-4">
+                                <img src="img/sk.jpg" class="img-fluid flex-shrink-0" alt="">
+                                <div class="ps-3">
+                                    <p class="mb-0 text-muted"></p>
+                                    <a href="" class="text-body"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container py-4">
+                <div class="border-top border-secondary pb-4"></div>
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">Papua New Guinea's History & Culture</a>, All Right Reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                        <b>Designed By:</b> TEAM SNA Batch 2,Group 7 <a href="team.html" class="nav-item nav-link">Visit Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary border-3 border-light back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
+
+</html>
